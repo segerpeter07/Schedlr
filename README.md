@@ -1,2 +1,2 @@
 # Schedlr
-A final discrete math project applying graph coloring theory to the problem of scheduling conflicts.
+A discrete math final project applying graph coloring theory to the problem of scheduling conflicts.

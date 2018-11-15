@@ -14,6 +14,10 @@ def anonymizeUser(anonUsers, user):
 
 
 def importData(name):
+    '''
+    importData takes a CSV filename and parses it into a list of classes, a dictionary of anonymized userId:course selection,
+    and a dictionary of anonymized userId:user name
+    '''
     csv_file = open(name, mode='r')
     csv_reader = csv.reader(csv_file)
     ans = []
@@ -32,9 +36,22 @@ def importData(name):
     return classes, anonUsers, usersDict
 
 
+def buildClassMatrix(users):
+    '''
+    buildClassMatrix takes a dictionary of users and class selections and builds a matrix of them
+    '''
+    mtx = []
+    for user in users:
+        mtx.append(users[user])
+
+    return mtx
+
+
 if __name__ == "__main__":
     classes, anonUsers, usersDict = importData('Data/generatedData.csv')
     print(classes)
     id = list(anonUsers)
-    print(anonUsers[id[0]])
-    print(usersDict[id[0]])
+    # print(anonUsers[id[0]])
+    # print(usersDict[id[0]])
+    classMtx = buildClassMatrix(usersDict)
+    print(classMtx)
