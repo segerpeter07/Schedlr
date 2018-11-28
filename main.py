@@ -23,17 +23,8 @@ def importData(name):
     ans = []
     for line in csv_reader:
         ans.append(line)
-    
-    classes = ans[0][1::]
-    usersList = ans[1::]
-    usersDict = {}
-    
-    anonUsers = {}
-    for user in usersList:
-        id, anonUsers = anonymizeUser(anonUsers, user[0])
-        usersDict[id] = user[1::]
 
-    return classes, anonUsers, usersDict
+    return ans
 
 
 def buildClassMatrix(users):
@@ -48,10 +39,11 @@ def buildClassMatrix(users):
 
 
 if __name__ == "__main__":
-    classes, anonUsers, usersDict = importData('Data/generatedData.csv')
-    print(classes)
-    id = list(anonUsers)
+    # classes, anonUsers, usersDict = importData('Data/generatedData.csv')
+    ans = importData('Data/dataset.csv')
+    print(ans[0])
+    # id = list(anonUsers)
     # print(anonUsers[id[0]])
     # print(usersDict[id[0]])
-    classMtx = buildClassMatrix(usersDict)
-    print(classMtx)
+    # classMtx = buildClassMatrix(usersDict)
+    # print(classMtx)
