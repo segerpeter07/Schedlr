@@ -9,6 +9,7 @@ from collections import OrderedDict
 class Event:
     def __init__(self, name):
         self.name = name
+        self.color = None       # be changed by the coloring algorithm
         self.students = 0
         self.conflicts = []
         self.eventConflicts = []
@@ -30,6 +31,25 @@ class User:
         for c in self.conflicts:
             ans = ans + " " + c
         return ans
+
+
+class Graph:
+    def __init__(self, firstNode):
+        self.nodes = [firstNode]
+
+    def addEvent(self, newEvent):
+        '''
+        addEvent takes an event and adds all conflicts to the graph if they haven't already been accounted for
+        '''
+        for event in self.nodes:
+            for person in newEvent.conflicts:
+                if person in event.conflicts:   # check if a person (conflict) appears in both
+                    # add conflict to both
+                    if event not in newEvent.eventConflicts:
+                        newEvent.eventConflicts.append(event)
+                    if newEvent not in event.eventConflicts:
+                        event.eventConflicts.append(newEvent)
+        self.nodes.append(newEvent)
 
 
 
@@ -83,9 +103,22 @@ def buildConflicts(data, events, users):
     return
 
 
+def buildGraph(events):
+    '''
+    Builds an undirected graph datastructure with events as nodes and edges as conflicts
+    '''
+    keys = list(events.keys())
+    g = Graph(events[keys[0]])
+    for event in events:
+        g.addEvent(events[event])
+    return g
 
-if __name__ == "__main__":
-    data = importData('Data/dataset.csv')
+
+def prepareDataStructure(file):
+    '''
+    Builds the data structure
+    '''
+    data = importData(file)
     users = buildUsers(data[0])
     events = buildEvents(data[1:])
 
@@ -93,9 +126,17 @@ if __name__ == "__main__":
     
     
     eventsKeys = list(events.keys())
-    print(eventsKeys[0])
     data = events[eventsKeys[0]]
     conflicts = data.conflicts
-    for conflict in conflicts:
-        print(conflict)
-    print(data.students)
+
+    graph = buildGraph(events)
+    # for node in graph.nodes:
+    #     print("CONFLICT --------->", node.name)
+    #     for c in node.eventConflicts:
+    #         print(c.name)
+    return graph
+
+
+
+if __name__ == "__main__":
+    graph = prepareDataStructure('Data/dataset.csv')
