@@ -13,7 +13,7 @@ class Event:
         self.students = 0
         self.conflicts = []
         self.eventConflicts = []
-    
+
     def __str__(self):
         ans = self.name
         for c in self.conflicts:
@@ -39,7 +39,7 @@ class Graph:
 
     def addEvent(self, newEvent):
         '''
-        addEvent takes an event and adds all conflicts to the graph if they haven't already been accounted for
+        addEvent takes an event and adds all conflicts to the graph if they haven't already been accounted for.
         '''
         for event in self.nodes:
             for person in newEvent.conflicts:
@@ -105,7 +105,7 @@ def buildConflicts(data, events, users):
 
 def buildGraph(events):
     '''
-    Builds an undirected graph datastructure with events as nodes and edges as conflicts
+    Builds an undirected graph datastructure with events as nodes and edges as conflicts.
     '''
     keys = list(events.keys())
     g = Graph(events[keys[0]])
@@ -116,15 +116,15 @@ def buildGraph(events):
 
 def prepareDataStructure(file):
     '''
-    Builds the data structure
+    Builds the data structure.
     '''
     data = importData(file)
     users = buildUsers(data[0])
     events = buildEvents(data[1:])
 
     buildConflicts(data[1:], events, users)
-    
-    
+
+
     eventsKeys = list(events.keys())
     data = events[eventsKeys[0]]
     conflicts = data.conflicts
