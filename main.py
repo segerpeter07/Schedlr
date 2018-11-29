@@ -11,6 +11,7 @@ class Event:
         self.name = name
         self.students = 0
         self.conflicts = []
+        self.eventConflicts = []
     
     def __str__(self):
         ans = self.name
