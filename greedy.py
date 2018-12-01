@@ -1,11 +1,9 @@
-from main import prepareDataStructure
+from ingester import prepareDataStructure, printGraph
 
-# get file name
-graph = prepareDataStructure('Data/dataset.csv')
 
 def greedy(graph):
     """
-    Takes a graph and colors itself.
+    Takes a graph and colors itself using a greedy algorithmic approach.
     """
     color_list = list(range(len(graph.nodes)))
 
@@ -16,8 +14,22 @@ def greedy(graph):
                 available_colors.remove(conflict.color)
         node.color = available_colors[0]
 
-def printGraph(graph):
+
+def countColors(graph):
+    '''
+    Takes a Graph obj and counts how many colors are used to color it.
+    '''
+    colors = []
     for node in graph.nodes:
-        print("CONFLICT --------->", node.name)
         for c in node.eventConflicts:
-            print(c.name, c.color)
+            if c.color not in colors:
+                colors.append(c.color)
+    return len(colors)
+
+
+if __name__ == "__main__":
+    # get file name
+    graph = prepareDataStructure('Data/dataset.csv')
+
+    greedy(graph)
+    print("NUMBER OF COLORS: ", countColors(graph))

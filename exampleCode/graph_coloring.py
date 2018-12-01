@@ -44,6 +44,7 @@ def CreateGraph():
 def DrawGraph(G,col_val):
 	pos = nx.spring_layout(G)
 	values = [col_val.get(node, 'blue') for node in G.nodes()]
+	print(values)
 	nx.draw(G, pos, with_labels = True, node_color = values, edge_color = 'black' ,width = 1, alpha = 0.7)  #with_labels=true is to show the node number in the output graph
 
 

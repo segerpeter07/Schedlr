@@ -9,7 +9,7 @@ from collections import OrderedDict
 class Event:
     def __init__(self, name):
         self.name = name
-        self.color = None       # be changed by the coloring algorithm
+        self.color = None       # will be changed by the coloring algorithm
         self.students = 0
         self.conflicts = []
         self.eventConflicts = []
@@ -114,6 +114,16 @@ def buildGraph(events):
     return g
 
 
+def printGraph(graph):
+    '''
+    Pretty printer function to display graph.
+    '''
+    for node in graph.nodes:
+        print("CONFLICT --------->", node.name)
+        for c in node.eventConflicts:
+            print(c.name, c.color)
+
+
 def prepareDataStructure(file):
     '''
     Builds the data structure.
@@ -124,19 +134,10 @@ def prepareDataStructure(file):
 
     buildConflicts(data[1:], events, users)
 
-
-    eventsKeys = list(events.keys())
-    data = events[eventsKeys[0]]
-    conflicts = data.conflicts
-
     graph = buildGraph(events)
-    # for node in graph.nodes:
-    #     print("CONFLICT --------->", node.name)
-    #     for c in node.eventConflicts:
-    #         print(c.name)
     return graph
-
 
 
 if __name__ == "__main__":
     graph = prepareDataStructure('Data/dataset.csv')
+    printGraph(graph)
