@@ -11,6 +11,7 @@ class Event:
         self.name = name
         self.color = None       # will be changed by the coloring algorithm
         self.students = 0
+        self.valence = 0
         self.conflicts = []
         self.eventConflicts = []
 
@@ -47,8 +48,10 @@ class Graph:
                     # add conflict to both
                     if event not in newEvent.eventConflicts:
                         newEvent.eventConflicts.append(event)
+                        newEvent.valence += 1
                     if newEvent not in event.eventConflicts:
                         event.eventConflicts.append(newEvent)
+                        event.valence += 1
         self.nodes.append(newEvent)
 
 
@@ -121,7 +124,7 @@ def printGraph(graph):
     for node in graph.nodes:
         print("CONFLICT --------->", node.name)
         for c in node.eventConflicts:
-            print(c.name, c.color)
+            print(c.name, c.color, c.valence)
 
 
 def prepareDataStructure(file):

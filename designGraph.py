@@ -33,7 +33,7 @@ def drawGraph(graph, colors):
     '''
     pos = nx.spring_layout(graph)
     values = [colors.get(node, 'blue') for node in graph.nodes()]
-    print(values)
+    print(len(values), values)
     nx.draw(graph, pos, with_labels = False, node_color=values, edge_color='black', width=1, alpha=0.7)
 
 
