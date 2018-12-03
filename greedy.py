@@ -27,15 +27,14 @@ def countColors(graph):
     '''
     colors = []
     for node in graph.nodes:
-        for c in node.eventConflicts:
-            if c.color not in colors:
-                colors.append(c.color)
+        if node.color not in colors:
+            colors.append(node.color)
     return len(colors)
 
 
 if __name__ == "__main__":
     # get file name
     graph = prepareDataStructure('Data/dataset.csv')
-    print_nodes(graph)
+    # print_nodes(graph)
     greedy(graph)
     print("NUMBER OF COLORS: ", countColors(graph))
