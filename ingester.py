@@ -40,7 +40,7 @@ class Graph:
 
     def addEvent(self, newEvent):
         '''
-        addEvent takes an event and adds all conflicts to the graph if they haven't already been accounted for.
+        Takes an event and adds all conflicts to the graph if they haven't already been accounted for.
         '''
         for event in self.nodes:
             for person in newEvent.conflicts:

@@ -1,5 +1,17 @@
 from ingester import prepareDataStructure, printGraph
 
+def sort_by_valence(graph):
+    """
+    Takes a graph and sorts its nodes in order of greatest degree to least degree.
+    """
+    graph.nodes.sort(key=lambda x: x.valence, reverse=True)
+
+def print_nodes(graph):
+    """
+    Prints nodes and their valence.
+    """
+    for node in graph.nodes:
+        print(node.name, node.valence)
 
 def greedy(graph):
     """
@@ -14,12 +26,6 @@ def greedy(graph):
                 available_colors.remove(conflict.color)
         node.color = available_colors[0]
 
-def print_nodes(graph):
-    """
-    Prints nodes and their valence.
-    """
-    for node in graph.nodes:
-        print(node.name, node.valence)
 
 def countColors(graph):
     '''
@@ -27,15 +33,16 @@ def countColors(graph):
     '''
     colors = []
     for node in graph.nodes:
-        for c in node.eventConflicts:
-            if c.color not in colors:
-                colors.append(c.color)
+        if node.color not in colors:
+            colors.append(node.color)
     return len(colors)
 
 
 if __name__ == "__main__":
     # get file name
     graph = prepareDataStructure('Data/dataset.csv')
+
+    sort_by_valence(graph)
     print_nodes(graph)
     greedy(graph)
     print("NUMBER OF COLORS: ", countColors(graph))
