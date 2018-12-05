@@ -3,16 +3,24 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>{{ title }}</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-    <h1>{{title}}</h1>
-    <br>
+    <h1><strong>{{title}}</strong></h1>
 
     {% for slot in blocks %}
-        <h2>Timeslot: {{slot}}</h2>
+        <div class="page-header">
+            <h3>Timeslot {{slot}}</h3>
+        </div>
+
+        <ul class="list-group">
         {% for event in blocks[slot] %}
-            <li>{{event}}</li>
+            <li class="list-group-item">{{event}}</li>
         {% endfor %}
+        </ul>
     {% endfor %}
+
 </body>
 </html>

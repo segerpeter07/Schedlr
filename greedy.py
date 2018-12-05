@@ -14,14 +14,12 @@ def greedy(graph):
                 available_colors.remove(conflict.color)
         node.color = available_colors[0]
 
-
 def print_nodes(graph):
     """
     Prints nodes and their valence.
     """
     for node in graph.nodes:
         print(node.name, node.valence)
-
 
 def countColors(graph):
     '''
@@ -37,6 +35,6 @@ def countColors(graph):
 if __name__ == "__main__":
     # get file name
     graph = prepareDataStructure('Data/dataset.csv')
-    # print_nodes(graph)
+    print_nodes(graph)
     greedy(graph)
     print("NUMBER OF COLORS: ", countColors(graph))
