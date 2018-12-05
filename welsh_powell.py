@@ -6,12 +6,14 @@ def sort_by_valence(graph):
     """
     graph.nodes.sort(key=lambda x: x.valence, reverse=True)
 
+
 def print_nodes(graph):
     """
     Prints nodes and their valence.
     """
     for node in graph.nodes:
-        print(node.name, node.valence)
+        print(node.name, node.valence, node.color)
+
 
 def greedy(graph):
     """
@@ -38,11 +40,16 @@ def countColors(graph):
     return len(colors)
 
 
+def welshPowell(graph):
+    sort_by_valence(graph)
+    greedy(graph)
+
+
 if __name__ == "__main__":
     # get file name
     graph = prepareDataStructure('Data/dataset.csv')
 
     sort_by_valence(graph)
-    print_nodes(graph)
     greedy(graph)
-    print("NUMBER OF COLORS: ", countColors(graph))
+    print_nodes(graph)
+    # print("NUMBER OF COLORS: ", countColors(graph))

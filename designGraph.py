@@ -1,6 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 from ingester import prepareDataStructure
+from welsh_powell import welshPowell, countColors
 from greedy import greedy
 
 
@@ -42,6 +43,11 @@ if __name__ == "__main__":
 
     # Run coloring algorithm
     greedy(graph)
+    # welshPowell(graph)
+
+    # Count number of colors assigned
+    print("Colors required: ", countColors(graph))
+    
 
     # Build node name: color dictionary
     col_val = buildColorDict(graph)
