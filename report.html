@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <br>
+
+    {% for slot in blocks %}
+        <h2>Timeslot: {{slot}}</h2>
+        {% for event in blocks[slot] %}
+            <li>{{event}}</li>
+        {% endfor %}
+    {% endfor %}
+</body>
+</html>

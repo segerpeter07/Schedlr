@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from ingester import prepareDataStructure
 from welsh_powell import welshPowell, countColors
 from greedy import greedy
+from generateSchedule import generateSchedule
 
 
 def createNxGraph(graph):
@@ -57,4 +58,7 @@ if __name__ == "__main__":
 
     # Draw graph and color it
     drawGraph(G, col_val)
-    plt.show()
+    # plt.show()
+
+    # Optionally also generate a print out of the schedule
+    generateSchedule(graph)
