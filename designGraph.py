@@ -43,8 +43,8 @@ if __name__ == "__main__":
     graph = prepareDataStructure('Data/dataset.csv')
 
     # Run coloring algorithm
-    greedy(graph)
-    # welshPowell(graph)
+    # greedy(graph)
+    welshPowell(graph)
 
     # Count number of colors assigned
     print("Colors required: ", countColors(graph))
@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
     # Draw graph and color it
     drawGraph(G, col_val)
-    # plt.show()
+    plt.show()
 
     # Optionally also generate a print out of the schedule
     generateSchedule(graph)
