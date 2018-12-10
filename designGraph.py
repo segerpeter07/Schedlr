@@ -28,7 +28,7 @@ def buildColorDict(graph):
     '''
     res = {}
     for node in graph.nodes:
-        res[node.name] = node.color+1
+        res[node.name] = node.color
     return res
 
 
@@ -50,7 +50,7 @@ if __name__ == "__main__":
 
     # Run coloring algorithm
     # greedy(graph)
-    welshPowell(graph)
+    # welshPowell(graph)
 
     # Count number of colors assigned
     print("Colors required: ", countColors(graph))

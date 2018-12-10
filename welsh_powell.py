@@ -19,10 +19,10 @@ def greedy(graph):
     """
     Takes a graph and colors itself using a greedy algorithmic approach.
     """
-    color_list = list(range(len(graph.nodes)))
+    # color_list = list(range(len(graph.nodes)))
 
     for node in graph.nodes:
-        available_colors = color_list
+        available_colors = list(range(len(graph.nodes)))
         for conflict in node.eventConflicts:
             if conflict.color in available_colors:
                 available_colors.remove(conflict.color)
@@ -47,6 +47,7 @@ def welshPowell(graph):
 
 if __name__ == "__main__":
     # get file name
+    # graph = prepareDataStructure('Data/allConflicts.csv')
     graph = prepareDataStructure('Data/dataset.csv')
 
     sort_by_valence(graph)
