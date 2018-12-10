@@ -112,8 +112,10 @@ def buildGraph(events):
     '''
     keys = list(events.keys())
     g = Graph(events[keys[0]])
+    del events[keys[0]]     # remove item that's already been added to graph
     for event in events:
-        g.addEvent(events[event])
+        if event not in g.nodes:
+            g.addEvent(events[event])
     return g
 
 
@@ -138,9 +140,13 @@ def prepareDataStructure(file):
     buildConflicts(data[1:], events, users)
 
     graph = buildGraph(events)
+
+    for node in graph.nodes:
+        print("NODE: ", node.name)
     return graph
 
 
 if __name__ == "__main__":
+    # graph = prepareDataStructure('Data/allConflicts.csv')
     graph = prepareDataStructure('Data/dataset.csv')
-    printGraph(graph)
+    # printGraph(graph)

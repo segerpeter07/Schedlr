@@ -22,6 +22,7 @@ def generateSchedule(graph):
         cur = blocks[node.color]
         blocks[node.color] = cur + [node.name]
 
+
     # Generate Template
     template_vars = {"title":"Faculty Candidates' Weekend 2019",
                     "blocks":blocks}

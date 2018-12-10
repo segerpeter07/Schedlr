@@ -1,0 +1,9 @@
+,Students,CS Candidate 1,ECE Candidate 1,Mech Candidate 1,Fluids Candidate 1,CS Candidate 2,ECE Candidate 2,Chem Candidate 1,AHS Candidate 2,Rame/Rae-Anne,Vin,S. Spence,R.Christianson,M.Sommerville,A.Downey,B.Linder,B.Minch,B.Hill,C.Lee,J.Stolk,C.Lynch
+Event1,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,,,,,,
+Event2,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,,,,,,
+Event3,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,,,,,,
+Event4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,,,,,,
+Event5,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,,,,,
+Event6,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,,1,,,,
+Event7,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,,,1,,,
+Event8,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,,,,1,,

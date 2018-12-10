@@ -13,10 +13,13 @@ def createNxGraph(graph):
     G = nx.Graph()
     for node in graph.nodes:
         # edges = []
-        for edge in node.eventConflicts:
-            # edges.append(edge.name)
-            G.add_edge(node.name, edge.name)
-        # G.add_edge(node.name, edges)
+        if node.eventConflicts == []:
+            G.add_node(node.name)
+        else:
+            for edge in node.eventConflicts:
+                # edges.append(edge.name)
+                G.add_edge(node.name, edge.name)
+            # G.add_edge(node.name, edges)
     return G
 
 def buildColorDict(graph):
@@ -25,7 +28,7 @@ def buildColorDict(graph):
     '''
     res = {}
     for node in graph.nodes:
-        res[node.name] = node.color
+        res[node.name] = node.color+1
     return res
 
 
@@ -35,12 +38,15 @@ def drawGraph(graph, colors):
     '''
     pos = nx.spring_layout(graph)
     values = [colors.get(node, 'blue') for node in graph.nodes()]
-    print(len(values), values)
     nx.draw(graph, pos, with_labels = False, node_color=values, edge_color='black', width=1, alpha=0.7)
 
 
+
 if __name__ == "__main__":
-    graph = prepareDataStructure('Data/dataset.csv')
+    graph = prepareDataStructure('Data/allConflicts.csv')
+    # graph = prepareDataStructure('Data/noConflicts.csv')
+    # graph = prepareDataStructure('Data/dataset.csv')
+
 
     # Run coloring algorithm
     # greedy(graph)
@@ -53,8 +59,11 @@ if __name__ == "__main__":
     # Build node name: color dictionary
     col_val = buildColorDict(graph)
 
+    # print(col_val)
+
     # Build network
     G = createNxGraph(graph)
+
 
     # Draw graph and color it
     drawGraph(G, col_val)
